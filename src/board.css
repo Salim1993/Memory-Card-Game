@@ -1,0 +1,6 @@
+#board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    text-align: center;
+    column-gap: 20px;
+}

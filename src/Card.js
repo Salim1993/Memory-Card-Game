@@ -4,10 +4,12 @@ function Card(props) {
 
   const card = props.card
 
-  const onClickListener = props.onClickListener
+  function onClickListener() {
+    props.onClickListener(card)
+  }
 
     return (
-        <div onClick={onClickListener}>
+        <div key={card.id} onClick={onClickListener}>
           <img src={card.image} alt={card.name}/>
           <p>{card.name}</p>
         </div>
