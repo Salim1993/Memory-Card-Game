@@ -17,12 +17,10 @@ function Board() {
   }
 
   function reshuffleCards() {
-    const shuffle = cardList.map((a) => ({sort: Math.random(), value: a}))
+    return cardList.map((a) => ({sort: Math.random(), value: a}))
             .sort((a, b) => a.sort - b.sort)
             .map((a) => a.value)
             .splice(0, 5)
-
-    setListOfCards(shuffle)
   }
 
   function gameOver() {
@@ -40,14 +38,17 @@ function Board() {
   }
 
   function setupData() {
-    reshuffleCards()
     const temp = listOfCards.map(card => {
       return <Card key={card.id} card={card} onClickListener={handleCardPressed}/>
     });
     setListOfViews(temp);
   }
 
-  useEffect(setupData, []);
+  useEffect(() => {
+    const shuffledList = reshuffleCards()
+    setListOfCards(shuffledList);
+    setupData()
+  }, []);
 
   return (
     <div id="board">
