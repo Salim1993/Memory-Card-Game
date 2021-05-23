@@ -8,12 +8,12 @@ function Card(props) {
     props.onClickListener(card)
   }
 
-    return (
-        <div key={card.id} onClick={onClickListener}>
-          <img src={card.image} alt={card.name}/>
-          <p>{card.name}</p>
-        </div>
-      );
+  return (
+    <div key={card.id} onClick={onClickListener}>
+      <img src={card.image} alt={card.name} />
+      <p>{card.name}</p>
+    </div>
+  );
 }
 
 export default Card;
