@@ -24,17 +24,34 @@ function Board(props) {
   }
 
   function gameOver() {
+    setPicked([]);
     props.gameOver();
   }
 
   function handleCardPressed(card) {
+    props.addScore();
+    /*
     const found = picked.includes(card);
     if (!found) {
+      props.addScore();
       addCardToPickedList(card, picked);
-
     } else {
       gameOver();
     }
+    
+    resetCards();
+    */
+  }
+
+  function resetCards() {
+    const shuffledList = reshuffleCards()
+    setListOfCards(shuffledList);
+    const newListOfViews = createListOfViews(shuffledList)
+    setListOfViews(newListOfViews);
+  }
+
+  function test() {
+    props.addScore()
   }
 
   function createListOfViews(listOfCardsToUse) {
@@ -53,6 +70,7 @@ function Board(props) {
   return (
     <div id="board">
       {listOfViews}
+      <button onClick={test}>Increment V2</button>
     </div>
   );
 }
