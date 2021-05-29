@@ -6,7 +6,7 @@ function Score(props) {
   const highestScore = props.highScore
 
   return (
-    <div>
+    <div id={props.id}>
       <p>Score: {currentScore}</p>
       <p>High Score: {highestScore}</p>
     </div>

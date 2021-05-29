@@ -9,7 +9,6 @@ function Board(props) {
 
   const [listOfCards, setListOfCards] = useState([]);
   const [picked, setPicked] = useState([]);
-  const [listOfViews, setListOfViews] = useState([]);
 
   function addCardToPickedList(card, currentPickedList) {
     currentPickedList.push(card);
@@ -29,8 +28,6 @@ function Board(props) {
   }
 
   function handleCardPressed(card) {
-    props.addScore();
-    /*
     const found = picked.includes(card);
     if (!found) {
       props.addScore();
@@ -40,37 +37,25 @@ function Board(props) {
     }
     
     resetCards();
-    */
   }
 
   function resetCards() {
     const shuffledList = reshuffleCards()
     setListOfCards(shuffledList);
-    const newListOfViews = createListOfViews(shuffledList)
-    setListOfViews(newListOfViews);
-  }
-
-  function test() {
-    props.addScore()
-  }
-
-  function createListOfViews(listOfCardsToUse) {
-    return listOfCardsToUse.map(card => {
-      return <Card key={card.id} card={card} onClickListener={handleCardPressed} />
-    });
   }
 
   useEffect(() => {
     const shuffledList = reshuffleCards()
     setListOfCards(shuffledList);
-    const newListOfViews = createListOfViews(shuffledList)
-    setListOfViews(newListOfViews);
   }, []);
 
   return (
     <div id="board">
-      {listOfViews}
-      <button onClick={test}>Increment V2</button>
+      {
+        listOfCards.map(card => {
+          return <Card key={card.id} card={card} onClickListener={handleCardPressed} />
+        })
+      }
     </div>
   );
 }

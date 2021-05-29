@@ -3,6 +3,7 @@ import Board from './Board'
 
 import React, { useEffect, useState } from 'react';
 import Score from './Score';
+import './app.css';
 
 function App() {
 
@@ -42,11 +43,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>DS3 Boss Memory Game</h1>
-        <Score currentScore={currentScore} highScore={highScore} />
+        <Score id="scoreboard" currentScore={currentScore} highScore={highScore} />
       </header>
       <Board gameOver={gameOver} pointIncrement={incrementScore} addScore={addScore}/>
       <Alert show={showAlert} timeout={alertTimeout} />
-      <button onClick={addScore}>Increment</button>
     </div>
   );
 }
