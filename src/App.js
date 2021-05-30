@@ -21,23 +21,16 @@ function App() {
   }
 
   const incrementScore = () => {
-    //TODO: read link for issue
-    // https://stackoverflow.com/questions/53845595/wrong-react-hooks-behaviour-with-event-listener
-    addScore();
-    if (currentScore > highScore) {
-      setHighScore(currentScore);
+    const incrementScore = currentScore + 1;
+    setCurrentScore(incrementScore);
+    if (incrementScore > highScore) {
+      setHighScore(incrementScore);
     }
   }
 
-  const addScore = () => {
-    const incrementScore = currentScore + 1;
-    setCurrentScore(incrementScore);
-  }
-
   useEffect(() => {
-    // take action when isVisible Changed
-    console.log(`updated score ${currentScore}`);
- }, [currentScore])
+    document.body.style.margin = 0;
+ }, [])
 
   return (
     <div className="App">
@@ -45,7 +38,7 @@ function App() {
         <h1>DS3 Boss Memory Game</h1>
         <Score id="scoreboard" currentScore={currentScore} highScore={highScore} />
       </header>
-      <Board gameOver={gameOver} pointIncrement={incrementScore} addScore={addScore}/>
+      <Board gameOver={gameOver} pointIncrement={incrementScore}/>
       <Alert show={showAlert} timeout={alertTimeout} />
     </div>
   );

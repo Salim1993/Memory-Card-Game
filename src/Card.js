@@ -11,7 +11,7 @@ function Card(props) {
   return (
     <div key={card.id} onClick={onClickListener}>
       <img src={card.image} alt={card.name} />
-      <p>{card.name}</p>
+      <p className="card-description">{card.name}</p>
     </div>
   );
 }

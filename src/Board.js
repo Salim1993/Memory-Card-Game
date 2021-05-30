@@ -30,7 +30,7 @@ function Board(props) {
   function handleCardPressed(card) {
     const found = picked.includes(card);
     if (!found) {
-      props.addScore();
+      props.pointIncrement();
       addCardToPickedList(card, picked);
     } else {
       gameOver();

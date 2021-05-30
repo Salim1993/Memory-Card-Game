@@ -2,3 +2,9 @@ img {
     height: 300px;
     width: 200px;
 }
+
+.card-description {
+    margin: 0;
+    padding: 16px;
+    border: 1px solid white;
+}
